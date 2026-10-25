@@ -1,0 +1,22 @@
+{
+  "name": "failure-triage",
+  "version": "0.1.0",
+  "description": "Groups Robot Framework and Playwright failures by root cause in a pane, and tells Claude the grouping",
+  "author": { "name": "Lasa" },
+  "license": "MIT",
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "playwrightReport": {
+      "type": "string",
+      "title": "Playwright JSON report path",
+      "description": "Where your Playwright json reporter writes (relative to the project). Leave as is to auto-detect common locations.",
+      "default": "auto"
+    },
+    "autoContext": {
+      "type": "boolean",
+      "title": "Tell Claude the failure groups",
+      "description": "After a foreground test run, add the grouped failures to what Claude reads (costs a few hundred tokens per failing run).",
+      "default": true
+    }
+  }
+}

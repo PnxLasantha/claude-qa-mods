@@ -1,0 +1,27 @@
+{
+  "name": "run-guard",
+  "version": "0.1.0",
+  "description": "Stops Claude from starting overlapping test runs, deleting test evidence, or touching protected hosts",
+  "author": { "name": "Lasa" },
+  "license": "MIT",
+  "userConfig": {
+    "protectedHosts": {
+      "type": "string",
+      "title": "Protected hosts",
+      "description": "Comma-separated hostnames/IPs Claude must never run commands against (e.g. prod-broker.example.com, 10.20.0.5). Empty = off.",
+      "default": ""
+    },
+    "blockConcurrent": {
+      "type": "boolean",
+      "title": "Block overlapping test runs",
+      "description": "Refuse to start robot/pabot/playwright test while another one is running on this machine.",
+      "default": true
+    },
+    "protectReports": {
+      "type": "boolean",
+      "title": "Protect test reports",
+      "description": "Refuse commands that delete output.xml, log/report.html, results/, test-results/, playwright-report/ and similar.",
+      "default": true
+    }
+  }
+}

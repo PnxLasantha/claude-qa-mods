@@ -1,0 +1,11 @@
+{
+  "name": "claude-qa-mods",
+  "owner": { "name": "Lasa" },
+  "description": "Claude Code plugins for test automation with Robot Framework and Playwright",
+  "plugins": [
+    { "name": "robot-progress", "source": "./plugins/robot-progress", "description": "Live Robot Framework run progress in a pane beside the chat" },
+    { "name": "failure-triage", "source": "./plugins/failure-triage", "description": "Groups Robot Framework and Playwright failures by root cause" },
+    { "name": "run-guard", "source": "./plugins/run-guard", "description": "Stops overlapping test runs, deleting test evidence, and touching protected hosts" },
+    { "name": "traceability-check", "source": "./plugins/traceability-check", "description": "Requires a requirement tag on every test Claude commits" }
+  ]
+}

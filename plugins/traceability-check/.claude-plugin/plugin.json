@@ -1,0 +1,22 @@
+{
+  "name": "traceability-check",
+  "version": "0.1.0",
+  "description": "Checks that tests Claude commits carry a requirement tag (Robot Framework and Playwright), and audits the repo on request",
+  "author": { "name": "Lasa" },
+  "license": "MIT",
+  "userConfig": {
+    "tagPattern": {
+      "type": "string",
+      "title": "Requirement tag pattern",
+      "description": "Regular expression (case-insensitive) a tag must match to count as a requirement link. Playwright's leading @ is ignored.",
+      "default": "^(REQ|SRS|SSRS|SRD|HAZ|SAF)[-_:.]?\\S*\\d"
+    },
+    "mode": {
+      "type": "string",
+      "title": "When a test has no requirement tag",
+      "description": "block: refuse the commit. warn: let it through and tell Claude and you.",
+      "options": ["block", "warn"],
+      "default": "block"
+    }
+  }
+}

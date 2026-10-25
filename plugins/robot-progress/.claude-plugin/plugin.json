@@ -1,0 +1,8 @@
+{
+  "name": "robot-progress",
+  "version": "0.1.0",
+  "description": "Live Robot Framework run progress in a pane beside the chat",
+  "author": { "name": "Lasa" },
+  "license": "MIT",
+  "types": "./types/index.d.ts"
+}
