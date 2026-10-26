@@ -37,6 +37,10 @@ test('running state shows progress, current test and failures on every surface',
     const ui = await $.ui.mount({ ...PANE, surface })
     expect((await ui.find({ type: 'Text', text: /^Running/ }))?.text).toContain('Mqtt')
     expect(await ui.find({ type: 'Text', text: /30%/ })).toBeTruthy()
+    // 10 passed of 12 run: floored, words not glyphs
+    const counts = await ui.find({ type: 'Text', text: /83% pass/ })
+    expect(counts?.text).toContain('10 passed')
+    expect(counts?.text ?? '').not.toMatch(/[✔✘⤼]/)
     expect(await ui.find({ type: 'Text', text: /Reconnect After Drop/ })).toBeTruthy()
     expect(await ui.find({ type: 'Text', text: /Wait For Message/ })).toBeTruthy()
     expect((await ui.find({ type: 'Text', text: /Timeout/ }))?.text).not.toContain('more')

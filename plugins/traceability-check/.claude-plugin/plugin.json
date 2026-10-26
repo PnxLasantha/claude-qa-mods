@@ -1,6 +1,6 @@
 {
   "name": "traceability-check",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Checks that tests Claude commits carry a requirement tag (Robot Framework and Playwright), and audits the repo on request",
   "author": { "name": "Lasa" },
   "license": "MIT",

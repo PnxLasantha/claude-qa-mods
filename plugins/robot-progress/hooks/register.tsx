@@ -30,10 +30,17 @@ function bar(percent: number, width: number): string {
   return '█'.repeat(filled) + '░'.repeat(w - filled)
 }
 
+/** Pass rate over tests that ran (skips excluded), floored so a single failure never shows 100%. */
+function passRate(p: Progress): number {
+  const ran = p.done - p.skipped
+  return ran > 0 ? Math.floor((100 * p.passed) / ran) : 0
+}
+
 function statusLine(p: Progress, isStale: boolean): string {
   const head = isStale ? 'Robot STALLED' : p.state === 'finished' ? 'Robot done' : 'Robot'
-  return `${head} ${p.done}/${p.total} · ✔${p.passed} ✘${p.failed}` +
-    (p.skipped ? ` ⤼${p.skipped}` : '') +
+  return `${head} ${p.done}/${p.total} · ${p.passed} passed, ${p.failed} failed` +
+    (p.skipped ? `, ${p.skipped} skipped` : '') +
+    (p.done - p.skipped > 0 ? ` (${passRate(p)}% pass)` : '') +
     (p.state === 'running' && !isStale && p.eta_s != null ? ` · ETA ${fmt(p.eta_s)}` : '')
 }
 
@@ -133,7 +140,7 @@ export const register: Register = on => {
         <Text bold color={stateColor}>{stateText}  ·  {p.suite ?? ''}</Text>
         <Text>{bar(p.percent, cols)} {p.percent}%</Text>
         <Text>
-          {p.done}/{p.total}   <Text color="green">✔ {p.passed}</Text>   <Text color="red">✘ {p.failed}</Text>   <Text dimColor>⤼ {p.skipped}</Text>
+          {p.done}/{p.total}   <Text color="green">{p.passed} passed</Text>   <Text color="red">{p.failed} failed</Text>   <Text dimColor>{p.skipped} skipped</Text>{p.done - p.skipped > 0 ? `   ${passRate(p)}% pass` : ''}
         </Text>
         <Text dimColor>
           elapsed {fmt(p.elapsed_s)}{p.state === 'running' && !isStale ? `  ·  ETA ~${fmt(p.eta_s)}` : ''}  ·  updated {p.updated_at}
@@ -150,7 +157,7 @@ export const register: Register = on => {
             <Text bold color="red">Failures ({p.failed})</Text>
             {failures.map(f => (
               <Box flexDirection="column">
-                <Text>✘ {f.test}</Text>
+                <Text>- {f.test}</Text>
                 <Text dimColor>   {(f.message.split('\n')[0] ?? '').slice(0, Math.max(20, cols))}</Text>
               </Box>
             ))}

@@ -113,7 +113,7 @@ export const register: Register = (on, options) => {
       return next(e)
     }
     if (r.untagged.length === 0) {
-      $.ui.status(r.checked ? `trace ✓ ${r.checked} changed test(s) tagged` : undefined)
+      $.ui.status(r.checked ? `trace: ${r.checked} changed test(s) tagged` : undefined)
       return next(e)
     }
 
