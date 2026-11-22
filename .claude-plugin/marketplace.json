@@ -6,6 +6,7 @@
     { "name": "robot-progress", "source": "./plugins/robot-progress", "description": "Live Robot Framework run progress in a pane beside the chat" },
     { "name": "failure-triage", "source": "./plugins/failure-triage", "description": "Groups Robot Framework and Playwright failures by root cause" },
     { "name": "run-guard", "source": "./plugins/run-guard", "description": "Stops overlapping test runs, deleting test evidence, and touching protected hosts" },
-    { "name": "traceability-check", "source": "./plugins/traceability-check", "description": "Requires a requirement tag on every test Claude commits" }
+    { "name": "traceability-check", "source": "./plugins/traceability-check", "description": "Requires a requirement tag on every test Claude commits" },
+    { "name": "istqb-test-design", "source": "./plugins/istqb-test-design", "description": "Designs minimal, non-redundant test sets with ISTQB Foundation and Advanced techniques" }
   ]
 }
