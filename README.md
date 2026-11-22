@@ -8,6 +8,7 @@ Claude Code plugins for test automation with Robot Framework and Playwright. Eac
 | [failure-triage](plugins/failure-triage) | Groups failures by root cause ("37 failures → 3 causes"), shows them in a pane, and tells Claude the groups so it investigates one test per cause |
 | [run-guard](plugins/run-guard) | Refuses overlapping test runs, deleting test reports and evidence, and commands against hosts you mark as protected |
 | [traceability-check](plugins/traceability-check) | Refuses commits whose new or changed tests lack a requirement tag, and tells Claude to ask rather than invent IDs. `/trace-audit` reports repo-wide coverage |
+| [istqb-test-design](plugins/istqb-test-design) | A skill that designs test cases with ISTQB Foundation and Advanced techniques: coverage items first, a review stop, then the smallest set of tests with no duplicates |
 
 ## Install
 
@@ -18,6 +19,7 @@ At the prompt of a Claude Code session, install the ones you want:
 /plugin install failure-triage --marketplace PnxLasantha/claude-qa-mods
 /plugin install run-guard --marketplace PnxLasantha/claude-qa-mods
 /plugin install traceability-check --marketplace PnxLasantha/claude-qa-mods
+/plugin install istqb-test-design --marketplace PnxLasantha/claude-qa-mods
 ```
 
 The first time, answer `y` to add the marketplace, then pick a scope. Configure options with `/plugin` → the plugin → configure.

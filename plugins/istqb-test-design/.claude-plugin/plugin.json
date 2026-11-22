@@ -1,0 +1,7 @@
+{
+  "name": "istqb-test-design",
+  "version": "0.1.0",
+  "description": "Skill that designs minimal, non-redundant test sets from requirements using ISTQB CTFL, CTAL-TA and CTAL-TTA techniques",
+  "author": { "name": "Lasa" },
+  "license": "MIT"
+}
