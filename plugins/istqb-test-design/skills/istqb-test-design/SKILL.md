@@ -181,6 +181,25 @@ Rules:
 - Variants of the same partition and logic become one **parameterized / data-driven** test. Combinatorial rows are ideal data-driven rows.
 - Positive, negative and boundary cases come from the coverage items, never from a quota.
 
+### Test case titles
+
+Many readers (testers, reviewers, safety assessors, managers) read only the title, so it must say what is checked without the steps.
+
+- Form: **"Verify <observable outcome> when <situation>"**.
+  - Negative cases: **"Verify <action> is refused when <invalid situation>"**, or "Verify nothing is changed when …".
+  - Good: "Verify the account is locked with a warning when a wrong password is entered for the third time"
+  - Good: "Verify the status icon turns orange with a warning when one device is offline"
+  - Bad: "Verify login scenario 17", "TC-03 invalid", "pwd=wrong, attempts=3, locked=false"
+- Lead with the outcome that matters most for risk: what is shown, what is refused, what is not changed, the colour or warning.
+- Write the outcome from the test's Expected result and the situation from its coverage item, so title, expectation and coverage always agree. If the Expected result changes, the title changes with it.
+- Plain words a reader of the requirement would understand. No internal state codes, signal or variable names, scenario or rule numbers, coverage or requirement IDs, device-type codes or internal flags. Those go in Steps / Data, the Covers column or tags. A short hint in brackets is fine, e.g. "(orange)".
+- No vague outcomes: "correctly", "properly", "works", "as expected" or "successfully" on their own. Name what is observed.
+- One outcome per title. If two different outcomes need joining with "and", check whether it should be two tests.
+- Under ~150 characters and unique across the suite. Sibling cases differ by their situation, never by a number or suffix.
+- Data-driven and combinatorial tests: the template names the shared behaviour, and each row gets its own title naming its situation (Robot Framework test names per template row, one Playwright `test()` per row, pytest `ids`).
+- Use the identical title everywhere: the design table, the test-management tool (e.g. Xray Test Summary, TestRail title), the automated test name, and any spec or document section.
+- **Project conventions override these rules.** If the repo or project has a naming guide (e.g. in `CLAUDE.md` or `docs/test-naming.md`) with a domain glossary or forbidden terms, follow it.
+
 Output format:
 
 | TC ID | Title | Covers | Preconditions | Steps / Data | Expected result | Unique defect caught |
@@ -198,7 +217,8 @@ Report each check explicitly:
 4. **Depth**: coverage level matches the Gate 0 risk level.
 5. **Technique choice**: each area states which technique was used and why; the stronger advanced technique was used where risk is High or Safety-critical; pairwise was not used for safety logic.
 6. **Decision-table checksum** matches (if tables used).
-7. Summary: `N coverage items → M tests (K merged/removed)` + coverage % per technique.
+7. **Titles**: every title follows the title rules, is unique, contains no internal codes or numbers, and agrees with its Expected result.
+8. Summary: `N coverage items → M tests (K merged/removed)` + coverage % per technique.
 
 ## Reviewing an existing test set
 

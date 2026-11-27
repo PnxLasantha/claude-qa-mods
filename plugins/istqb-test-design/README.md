@@ -41,6 +41,12 @@ Use istqb-test-design to review these tests against this requirement: <paste bot
 
 At Gate 1, reply `approved` or correct the list, for example "EP-03 range is 0–255" or "this is SIL 4".
 
+## Test case titles
+
+Titles follow the form **"Verify &lt;observable outcome&gt; when &lt;situation&gt;"**, in plain words, written from the Expected result, unique and under about 150 characters. Internal codes, signal names and scenario numbers go in the steps and data, not the title. The same title is used in the design table, the test-management tool and the automated test.
+
+To add your own domain glossary or forbidden terms, put a naming section in your project's `CLAUDE.md` or a `docs/test-naming.md`. The skill follows project conventions over its defaults.
+
 ## Limits
 
 - The mapping from risk level to coverage depth is a working default. Only the items cited to a syllabus section come from ISTQB. Your project's test strategy overrides it.
